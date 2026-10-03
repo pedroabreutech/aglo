@@ -2,7 +2,7 @@
 
 Frontend Next.js do Aglo. A aplicação permite criar contagens com upload de
 imagem, rodar a contagem automática de pessoas (P2Pnet) via backend e consultar
-relatórios. Não há login: todas as telas são abertas.
+relatórios.
 
 As telas são renderizadas no front, mas a persistência de relatórios, mídia e
 processamento são feitos pelo backend Express em `apps/backend`.
