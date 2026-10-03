@@ -1,0 +1,10 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+tmp-p2pnet-oficial
+tmp-validation
+weights
+README.md
+.env.example

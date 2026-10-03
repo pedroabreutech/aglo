@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ReportStatus {
+  ready
+  completed
+  failed
+}
+
+enum CountingMethod {
+  automatic
+  automatic_conservative
+}
+
+enum MediaKind {
+  original_image
+  processed_image
+}
+
+model Report {
+  id               String       @id @default(uuid())
+  eventName        String
+  eventDate        DateTime
+  eventType        String
+  locationLat      Decimal?     @db.Decimal(10, 7)
+  locationLng      Decimal?     @db.Decimal(10, 7)
+  locationAddress  String?
+  status           ReportStatus @default(ready)
+  countingMethod   CountingMethod @default(automatic)
+  estimatedCount   Int?
+  processingParams Json?
+  failureReason    String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  media MediaAsset[]
+
+  @@index([createdAt(sort: Desc)])
+  @@index([eventType])
+  @@index([status])
+}
+
+model MediaAsset {
+  id          String    @id @default(uuid())
+  reportId    String?
+  report      Report?   @relation(fields: [reportId], references: [id], onDelete: SetNull)
+  kind        MediaKind
+  bucket      String
+  objectKey   String
+  contentType String
+  byteSize    Int
+  createdAt   DateTime  @default(now())
+
+  @@unique([bucket, objectKey])
+  @@index([reportId, kind])
+}

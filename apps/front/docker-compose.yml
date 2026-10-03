@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web3000:
+    build: .
+    container_name: aglo_front_3000
+    env_file:
+      - .env
+    environment:
+      - PORT=3000
+      - NODE_ENV=dev
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  web3001:
+    build: .
+    container_name: aglo_front_3001
+    env_file:
+      - .env
+    environment:
+      - PORT=3001
+      - NODE_ENV=dev
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+

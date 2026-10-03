@@ -1,0 +1,15 @@
+node_modules
+build
+coverage
+generated
+src/generated
+.git
+.env
+.env.*
+!.env.example
+logs
+*.tsbuildinfo
+*.pdf
+credenciais.json
+gcp-credentials.json
+README.md

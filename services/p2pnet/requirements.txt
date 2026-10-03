@@ -1,0 +1,9 @@
+numpy
+Pillow
+scipy
+torch
+torchvision
+fastapi
+python-multipart
+uvicorn[standard]
+loguru
