@@ -112,8 +112,8 @@ export function AnaliseSidebar({
             Use imagem de boa qualidade em ângulo de ~90°, sem obstruções
             (árvores, prédios, sombras) que ocultem pessoas.
             {countingMethod === "automatic_conservative"
-              ? " O modo conservador usa apenas as detecções do P2Pnet, sem reforço em zonas densas."
-              : " O modo automático aplica reforço em zonas densas."}
+              ? " O modo conservador usa apenas as detecções diretas do P2Pnet."
+              : " O modo automático (P2Pnet denso) é otimizado para multidões muito aglomeradas."}
           </div>
         </div>
       </div>

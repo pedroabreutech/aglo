@@ -6,13 +6,13 @@ export const COUNTING_METHODS: CountingMethod[] = [
 ];
 
 export const COUNTING_METHOD_LABELS: Record<CountingMethod, string> = {
-  automatic: "Automática (P2Pnet + reforço)",
+  automatic: "Automática (P2Pnet denso)",
   automatic_conservative: "Automática conservadora (P2Pnet)",
 };
 
 export const COUNTING_METHOD_DESCRIPTIONS: Record<CountingMethod, string> = {
   automatic:
-    "Contagem por IA (P2Pnet) com reforço em zonas densas. Indicada para multidões muito aglomeradas.",
+    "Contagem por IA (P2Pnet denso), otimizada para zonas de alta densidade. Indicada para multidões muito aglomeradas.",
   automatic_conservative:
     "Contagem por IA (P2Pnet) apenas com as detecções do modelo. Indicada para cenas de baixa ou média densidade.",
 };

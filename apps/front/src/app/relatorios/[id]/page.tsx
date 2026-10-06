@@ -55,14 +55,11 @@ export default function RelatorioDetailPage() {
 
   const countingMethod = resolveCountingMethod(contagem?.countingMethod);
   const automaticCountValue = contagem ? getAutomaticCount(contagem) : undefined;
-  const reinforcement = contagem?.finalizada
-    ? contagem.densityReinforcement
-    : undefined;
 
   const imageSrc =
     contagem?.processedImagePath ?? contagem?.imagePath;
   const hasProcessedImage = Boolean(contagem?.processedImagePath);
-  // A imagem processada já inclui os pontos com reforço; sem overlay HTML.
+  // A imagem processada já inclui todos os pontos; sem overlay HTML.
   const overlayPoints = hasProcessedImage
     ? []
     : (contagem?.detectionPoints ?? []);
@@ -181,13 +178,6 @@ export default function RelatorioDetailPage() {
                         ? automaticCountValue.toLocaleString("pt-BR")
                         : "—"}
                     </p>
-                    {reinforcement?.applied && (
-                      <p className="mt-2 text-xs text-slate-600">
-                        {reinforcement.originalCount.toLocaleString("pt-BR")} detecções do P2Pnet
-                        {" + "}
-                        {reinforcement.extraPointsAdded.toLocaleString("pt-BR")} do reforço em zonas densas
-                      </p>
-                    )}
                   </div>
                   <div className="rounded-2xl bg-slate-50 p-4">
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Limiar de detecção</p>
